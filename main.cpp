@@ -38,20 +38,26 @@ int main(int argc, char** argv){
     // }
 
     auto start=high_resolution_clock::now();
+    
     filename=argv[1];
     cout << "Reading patient records from file: " << filename << endl;
-    read_csv(filename,Patient_ID,Patient_HR,Patient_Epoch);
-    cout << "PAT constitutes " << Patient_ID.size() << " rows" << endl;
+    size_t pat_records = read_csv(filename,Patient_ID,Patient_HR,Patient_Epoch);
+    cout << " PAT records = " << pat_records << endl;
+    cout << " PAT constitutes " << Patient_ID.size() << " rows" << endl;
 
     filename=argv[2];
     cout << "Reading ERGO records from file: " << filename << endl;
-    read_csv(filename,Ergo_ID,Ergo_HR,Ergo_Epoch);
-    cout << "ERGO constitutes " << Ergo_ID.size() << " rows" << endl;
+    size_t ergo_records = read_csv(filename,Ergo_ID,Ergo_HR,Ergo_Epoch);
+    cout << " ERGO records = " << ergo_records << endl;
+    cout << " ERGO constitutes " << Ergo_ID.size() << " rows" << endl;
+    
     auto stop=high_resolution_clock::now();
     auto duration=duration_cast<seconds>(stop-start);
     cout<<"Time taken = " << duration.count() << " seconds" << endl;
     milliseconds duration_ms=duration_cast<milliseconds>(stop-start);
     cout<<"Time taken = " << duration_ms.count() << " milliseconds" << endl;
     
+    cout << Ergo_ID[100] << ":" << Ergo_HR[100] << ":" << Ergo_Epoch[100] << endl;
+
     return 0;
 }
