@@ -6,6 +6,6 @@
 
 using namespace std;
 
-void read_csv(string filename, vector<int> &ID, vector<float> &HR, vector<int> &Epoch);
+size_t read_csv(string filename, vector<int> &ID, vector<float> &HR, vector<int> &Epoch);
 
 #endif
