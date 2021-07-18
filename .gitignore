@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio Code settings/configurations
+c_cpp_properties.json
+launch.json
+settings.json
+tasks.json
+
