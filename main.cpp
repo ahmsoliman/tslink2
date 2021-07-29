@@ -200,9 +200,9 @@ int main(int argc, char** argv){
 
     stopwatch sw; //instantiating a stopwatch object
 
-    if(argc<3){
+    if(argc<4){
         cout<<"Please input filenames. "
-         <<"For example, ./tslink2 ../pat.csv ../ergo.csv"
+         <<"For example, ./tslink2 ../pat.csv ../ergo.csv ../link_experiments.csv"
          <<endl;
         exit(1);
     }
@@ -429,6 +429,10 @@ int main(int argc, char** argv){
         <<","<<t[4]<<","<<t[5]
         <<","<<tp<<","<<fp<<endl;
 
+    string logfilename = argv[3];
+    ofstream log(logfilename, std::ios_base::app | std::ios_base::out);
+    log << results.str();
+    
     cout<<"Results: "<<results.str();
 
     return 0;
