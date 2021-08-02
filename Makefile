@@ -10,6 +10,11 @@ LFLAGS = $(LFLAGS_RELEASE)
 EXEC = tslink2
 OBJS = utils.o stopwatch.o main.o
 
+all	: tslink1 tslink2
+	
+tslink1 : $(OBJS)
+	g++ $(LFLAGS) tslink1.o utils.o stopwatch.o -o tslink1
+
 tslink2 : $(OBJS)
 	g++ $(LFLAGS) $(OBJS) -o $(EXEC)
 
@@ -21,6 +26,9 @@ utils.o : utils.cpp
 
 stopwatch.o : stopwatch.cpp
 	g++ $(CFLAGS) stopwatch.cpp
+
+tslink1.o : tslink1.cpp
+	g++ $(CFLAGS) tslink1.cpp
 
 clean	:
 	rm -f $(OBJS) $(EXEC)
