@@ -299,8 +299,9 @@ int main(int argc, char** argv){
                 if(E[j]==Emax)
                   {
                     //Associate row j of ERGO with patient i
+                    ergo_id = ERGO_I[j];
                     e2p[to_string(ergo_id)][to_string(pat_id)]++;
-                  }             
+                  }
               }
           }
       }
@@ -318,7 +319,7 @@ int main(int argc, char** argv){
               pat_id=stoi(get_most_frequent_pat(p2c));
             }
           //link patient to ergo
-          e2plinkage[to_string(ergo_id)]=pat_id;
+          e2plinkage[to_string(ergo_id)]=to_string(pat_id);
       }
     t[5]=sw.lap("TSLink1 Linking took : ");
 
