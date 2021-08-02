@@ -12,7 +12,7 @@ OBJS = utils.o stopwatch.o main.o
 
 all	: tslink1 tslink2
 	
-tslink1 : $(OBJS)
+tslink1 : tslink1.o utils.o stopwatch.o
 	g++ $(LFLAGS) tslink1.o utils.o stopwatch.o -o tslink1
 
 tslink2 : $(OBJS)
