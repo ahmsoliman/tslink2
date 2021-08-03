@@ -300,7 +300,7 @@ int main(int argc, char** argv){
                   {
                     //Associate row j of ERGO with patient i
                     ergo_id = ERGO_I[j];
-                    e2p[to_string(ergo_id)][to_string(pat_id)]++;
+                    e2p[to_string(ergo_id)][to_string(pat_id)]=Emax;
                   }
               }
           }
