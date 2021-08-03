@@ -374,5 +374,24 @@ int main(int argc, char** argv){
     
     cout<<"Results: "<<results.str();
 
+    //deallocate memory
+    delete[] PAT_I;
+    for(int i = 0;i<m;++i)
+      {
+        delete[] PAT_V[i];
+        delete[] PAT_D[i];
+      }
+    delete[] PAT_V;
+    delete[] PAT_D;
+
+    delete[] ERGO_I;
+    for(int k = 0;k<p;++k)
+      {
+        delete[] ERGO_V[k];
+        delete[] ERGO_D[k];
+      }
+    delete[] ERGO_V;
+    delete[] ERGO_D;
+
     return 0;
 }
