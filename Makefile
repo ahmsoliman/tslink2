@@ -2,7 +2,7 @@ CFLAGS_DEBUG = -c -g3 -D_GLIBCXX_DEBUG
 LFLAGS_DEBUG = 
 
 CFLAGS_RELEASE = -c -O3
-LFLAGS_RELEASE = -O3
+LFLAGS_RELEASE = -O3 -static
 
 CFLAGS = $(CFLAGS_RELEASE)
 LFLAGS = $(LFLAGS_RELEASE)
@@ -31,4 +31,4 @@ tslink1.o : tslink1.cpp
 	g++ $(CFLAGS) tslink1.cpp
 
 clean	:
-	rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJS) $(EXEC) tslink1
