@@ -37,4 +37,9 @@ launch.json
 settings.json
 tasks.json
 
-tslink2
+# Output directory
+out/*
+
+# Project related notes
+etc/*
+
