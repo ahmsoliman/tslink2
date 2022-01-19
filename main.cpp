@@ -94,6 +94,24 @@ bool sort_by_date_then_value_then_type(const dvit& a,
     return sorted;
 }
 
+
+bool sort_by_value_then_type(const dvit& a, const dvit& b){
+    
+    bool sorted = false;
+    if( GET_VALUE(a) < GET_VALUE(b) )
+      {
+        sorted = true;
+      }
+    else
+      {
+        if( GET_VALUE(a) == GET_VALUE(b) )
+          {
+            sorted = (GET_TYPE(a) < GET_TYPE(b));
+          }
+      }
+    return sorted;
+}
+
 // print the passed in tuple for either a patient
 // or ergometric test
 // %os could be std::cout to print to stdout or
@@ -182,7 +200,7 @@ int main(int argc, char** argv){
     TP = number of true positive links
     FP = number of false positive links*/
 
-    results << "TSLink2_C++,";
+    results << "TSLink2_C++_V,";
 
     double t[6];
 
@@ -280,11 +298,11 @@ int main(int argc, char** argv){
 
     // sort S1 and S2
     sw.start();
-    sort(S1.begin(), S1.end(), sort_by_date_then_value);
+    sort(S1.begin(), S1.end(), sort_by_value);
     t[4]=sw.lap("Sorting S1 took : ");
     
     sw.start();
-    sort(S2.begin(), S2.end(), sort_by_date_then_value);
+    sort(S2.begin(), S2.end(), sort_by_value);
     t[4]+=sw.lap("Sorting S2 took : ");
     
     //Merge S1 and S2 into S
@@ -292,7 +310,7 @@ int main(int argc, char** argv){
     vector<dvit> S;
     S.reserve(S1.size()+S2.size());
     merge(S1.begin(), S1.end(), S2.begin(), S2.end(), 
-      back_inserter(S), sort_by_date_then_value_then_type);
+      back_inserter(S), sort_by_value_then_type);
     t[4]+=sw.lap("Merging S1 and S2 into S took : ");
 
     //For debugging only: print sorted sequence to a file
@@ -337,16 +355,14 @@ int main(int argc, char** argv){
           }
         //get potential patient records
         while ( it!=S.end() && GET_TYPE(*it)==TYPE_PATIENT
-                && GET_DATE(*it)==GET_DATE(p) && 
-                GET_VALUE(*it)==GET_VALUE(p)) 
+                && GET_VALUE(*it)==GET_VALUE(p)) 
           { 
             pv.push_back(*it); //add other patients
             ++it;
           }
         //get ergo records
         while ( it!=S.end() && GET_TYPE(*it)==TYPE_ERGO
-                && GET_DATE(*it)==GET_DATE(p) && 
-                GET_VALUE(*it)==GET_VALUE(p))
+                && GET_VALUE(*it)==GET_VALUE(p))
           {
             ev.push_back(*it);
             ++it;
@@ -397,6 +413,7 @@ int main(int argc, char** argv){
 
     sw.total();
 
+#ifdef DEBUG
     //For debugging only
     //save ergo-to-pat linkages
     {
@@ -422,6 +439,7 @@ int main(int argc, char** argv){
         }
       of.close();
     }
+#endif
 
     results<<sw.gettotalseconds()
         <<",-"
