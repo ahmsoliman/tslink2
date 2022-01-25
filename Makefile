@@ -7,7 +7,7 @@ LFLAGS_RELEASE = -O3
 CFLAGS = $(CFLAGS_RELEASE)
 LFLAGS = $(LFLAGS_RELEASE)
 
-EXEC = tslink2
+EXEC = out/tslink2_tv
 OBJS = utils.o stopwatch.o main.o
 
 tslink2 : $(OBJS)

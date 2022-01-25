@@ -96,7 +96,7 @@ read_csv(string filename, vector<int> &ID, vector<float> &HR, vector<int> &Epoch
                   break;
                 case 3:
                   f[j]='\0';
-                  Epoch[r++]=stoi(f);
+                  Epoch[r++]=stoi(f) % 86400; //Drop date and keep time
                   j=0;
                   //f[0]='\0';
                   i=1;
