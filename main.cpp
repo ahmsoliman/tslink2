@@ -182,7 +182,7 @@ int main(int argc, char** argv){
     TP = number of true positive links
     FP = number of false positive links*/
 
-    results << "TSLink2_C++,";
+    results << "TSLink2_C++_DV,";
 
     double t[6];
 
