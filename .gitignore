@@ -43,3 +43,5 @@ out/*
 # Project related notes
 etc/*
 
+# Data directory
+data/
