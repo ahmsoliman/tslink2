@@ -38,8 +38,10 @@ settings.json
 tasks.json
 
 # Output directory
-out/*
+out/
 
 # Project related notes
-etc/*
+etc/
 
+# Data directory
+data/
