@@ -10,7 +10,9 @@ LFLAGS = $(LFLAGS_RELEASE)
 EXEC = out/tslink2_tv
 OBJS = utils.o stopwatch.o main.o
 
-tslink2 : $(OBJS)
+all : tslink2_tv
+
+tslink2_tv : $(OBJS)
 	g++ $(LFLAGS) $(OBJS) -o $(EXEC)
 
 main.o : main.cpp
