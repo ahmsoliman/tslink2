@@ -1,8 +1,26 @@
 # TSLink2 
 
-This is a time-series record linkage algorithm. In this project the program links patients with their ergometric tests. 
+A fast timeseries record linkage algorithm. This program efficiently links patients to their ergometric tests based on timeseries data. 
 
-## Description
+## Data preparation
 
-Data is split into two csv files: `pat.csv` and `ergo.csv`. `pat.csv` contains three columns: **patient_ID**, **HR**, and **timestamp**. There are exactly four rows for each ergometric tests. The `ergo.csv` file contains all timeseries readings for the entire dataset of ergometric tests. The `ergo.csv` file constitutes three columns: `Ergo_ID`, `HR` (Heart Rate in BPM), and `timestamp`. The goal is to link patients in the `pat.csv` file to their ergometric tests in the `ergo.csv` file.
+A simulated dataset accompanies this repository. The dataset could be downloaded from [figshare](https://doi.org/10.6084/m9.figshare.19224786.v1). This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.
+
+ - **sim_ergo_1600.csv** contains heart rate timeseries data for 1600 patients' ergometric tests. For each patient, 20 different ergometric tests were simulated. Each row in this file constitutes three field values: Ergo_ID, Heart Rate (BPM), and timestamp.
+
+ - **sim_pat_1600.csv** contains only four sample readings from each of the patient's 20 ergometric tests. Each row contains three values: patient_ID, Heart Rate, and timestamp.
+
+## Objective
+
+The goal is to link patients (identified by their patient_ID in the pat.csv file) to their corresponding ergometric tests (identified by their Ergo_ID in the ergo.csv file). This is done solely on matching the timestamp-value pairs from both files.
+
+
+## Performance evaluation
+
+Data is simulated such that correctly linked/matched identifiers follow the following formula:
+
+( |Ergo_ID - patient_ID| ) mod 10000 == 0
+
+The above formula is useful in evaluating the linkage algorithm performance.
+
 
