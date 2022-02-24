@@ -23,4 +23,16 @@ Data is simulated such that correctly linked/matched identifiers follow the foll
 
 The above formula is useful in evaluating the linkage algorithm performance.
 
+## How to build
 
+```shell
+make tslink2_tv
+```
+
+## How to run 
+
+```shell
+./tslink2_tv sim_pat_1600.csv sim_ergo_1600.csv link_results.csv
+```
+
+The results are logged by appending a line at the end of the *link_results.csv* file.
