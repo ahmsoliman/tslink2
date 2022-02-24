@@ -41,7 +41,7 @@ tasks.json
 out/*
 
 # Project related notes
-etc/*
+etc/
 
 # Data directory
 data/
