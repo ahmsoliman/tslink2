@@ -45,3 +45,6 @@ etc/
 
 # Data directory
 data/
+
+# Build directory
+build/
