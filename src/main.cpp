@@ -11,6 +11,7 @@
 #include <bits/stdc++.h>
 #include <map>
 #include <iterator>
+#include <boost/filesystem.hpp>
 
 //#define DEBUG
 
@@ -40,6 +41,7 @@ typedef std::map<std::string, std::string> ergo2pat;
 
 using namespace std;
 using namespace std::chrono;
+namespace fs = boost::filesystem;
 
 bool sort_by_date(const dvit& a, const dvit& b){
     return (GET_DATE(a) < GET_DATE(b));
@@ -430,6 +432,8 @@ int main(int argc, char** argv){
         <<","<<tp<<","<<fp<<endl;
 
     string logfilename = argv[3];
+    fs::path dir(logfilename);
+    assert(fs::create_directories(dir.parent_path()));
     ofstream log(logfilename, std::ios_base::app | std::ios_base::out);
     log << results.str();
     
