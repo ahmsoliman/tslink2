@@ -32,7 +32,7 @@ make tslink2
 ## How to run 
 
 ```shell
-build/tslink2 data/sim_pat_1600.csv data/sim_ergo_1600.csv out/link_results.csv
+bin/tslink2 data/sim_pat_1600.csv data/sim_ergo_1600.csv out/link_results.csv
 ```
 
 The results are logged by appending a line at the end of the *link_results.csv* file.
