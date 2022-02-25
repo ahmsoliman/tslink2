@@ -7,21 +7,27 @@ LFLAGS_RELEASE = -O3
 CFLAGS = $(CFLAGS_RELEASE)
 LFLAGS = $(LFLAGS_RELEASE)
 
-EXEC = build/tslink2
+EXEC = bin/tslink2
 OBJS = build/utils.o build/stopwatch.o build/main.o
 
 all : tslink2
 
-tslink2 : $(OBJS)
+tslink2 : bin/tslink2
+
+bin/tslink2 : $(OBJS)
+	@mkdir -p $(@D)
 	g++ $(LFLAGS) $(OBJS) -o $(EXEC)
 
 build/main.o : src/main.cpp
+	@mkdir -p $(@D)
 	g++ $(CFLAGS) src/main.cpp -o build/main.o
 
 build/utils.o : src/utils.cpp
+	@mkdir -p $(@D)
 	g++ $(CFLAGS) src/utils.cpp -o build/utils.o
 
 build/stopwatch.o : src/stopwatch.cpp
+	@mkdir -p $(@D)
 	g++ $(CFLAGS) src/stopwatch.cpp -o build/stopwatch.o
 
 clean	:
