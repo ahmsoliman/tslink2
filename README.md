@@ -33,14 +33,50 @@ The above formula is useful in evaluating the linkage algorithm performance.
 
 ## How to build
 
+To build just one target, use either
+```shell
+make tslink1
+```
+or
 ```shell
 make tslink2
 ```
-
-## How to run 
-
+To build both implementations, use
 ```shell
-bin/tslink2 data/sim_pat_1600.csv data/sim_ergo_1600.csv out/link_results.csv
+make all
 ```
 
-The results are logged by appending a line at the end of the *link_results.csv* file.
+## How to use
+
+Assuming that the datasets (the two csv files) have been downloaded and uncompressed into directory `data`.
+Run `tslink1` or `tslink2` on these simulated datasets as follows: 
+```shell
+bin/tslink1 data/sim_pat_1600.csv data/sim_ergo_1600.csv out/link_results.csv
+bin/tslink2 data/sim_pat_1600.csv data/sim_ergo_1600.csv out/link_results.csv
+```
+Both executables take three arguments in the following order:
+`<patients dataset>`, `<ergometric dataset>`, and `<output path>` 
+Each time an experiment is run,
+the results are appended to the file designated by the output path (third argument).
+In the example above, *out/link_results.csv* is the output path.
+Any path could be used for reporting the results. 
+If the file does not exist, it is automatically created and initialized with the header line.
+
+## Results
+
+Each row in the output csv file constitutes the following data:
+```
+algo,n_patients,n_ergos,t,t1,t2,t3,t4,t5,TP,FP
+```
+Where `algo` is the algorithm signature which is either *TSLink1_C++* or *TSLink2_C++*,
+`n_patients` is the number of unique patients in the dataset,
+`n_ergos` is the number of unique ergo tests,
+`t` is the total run time in seconds,
+`t1` is the date-to-epoch conversion time (N/A) (always = `-`),
+`t2` is the time taken to form the first sequence `S1`,
+`t3` is the time taken to form the `S2` sequence,
+`t4` is the time taken to sort `S1`, `S2`, merge them into `S`, and sort the merged sequence `S`,
+`t5` is the time taken to scan the sequence `S` and perform *pat-to-ergo associations* followed by linkage.
+`TP` is the number of true positive links, and
+`FP` is the number of false positive links.
+
