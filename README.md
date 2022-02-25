@@ -2,6 +2,14 @@
 
 A fast timeseries record linkage algorithm. This program efficiently links patients to their ergometric tests based on timeseries data. 
 
+## Requirements
+
+Install the Boost Filesystem and System libraries
+
+```shell
+sudo apt install libboost-filesystem-dev
+```
+
 ## Data preparation
 
 A simulated dataset accompanies this repository. The dataset could be downloaded from [figshare](https://doi.org/10.6084/m9.figshare.19224786.v1). This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.

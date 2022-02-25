@@ -16,7 +16,7 @@ tslink2 : bin/tslink2
 
 bin/tslink2 : $(OBJS)
 	@mkdir -p $(@D)
-	g++ $(LFLAGS) $(OBJS) -o $(EXEC)
+	g++ $(LFLAGS) $(OBJS) -o $(EXEC) -lboost_system -lboost_filesystem
 
 build/main.o : src/main.cpp
 	@mkdir -p $(@D)
