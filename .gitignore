@@ -48,3 +48,6 @@ data/
 
 # Build directory
 build/
+
+# Executable directory
+bin/
