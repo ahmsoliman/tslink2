@@ -51,3 +51,6 @@ build/
 
 # Executable directory
 bin/
+
+# Tests directory
+tests/
