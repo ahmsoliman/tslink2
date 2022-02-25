@@ -433,10 +433,20 @@ int main(int argc, char** argv){
 
     string logfilename = argv[3];
     fs::path dir(logfilename);
-    assert(fs::create_directories(dir.parent_path()));
-    ofstream log(logfilename, std::ios_base::app | std::ios_base::out);
-    log << results.str();
-    
+    fs::create_directories(dir.parent_path());
+    ofstream log;
+    if(!fs::exists(logfilename))
+      {
+        ofstream log(logfilename, std::ios_base::app | std::ios_base::out);
+        log << "algo,n_patients,n_ergos,t,t1,t2,t3,t4,t5,TP,FP" << endl;
+        log << results.str();
+      }
+    else
+      {
+        ofstream log(logfilename, std::ios_base::app | std::ios_base::out);
+        log << results.str();
+      }
+
     cout<<"Results: "<<results.str();
 
     return 0;
