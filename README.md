@@ -12,7 +12,17 @@ sudo apt install libboost-filesystem-dev
 
 ## Data preparation
 
-A simulated dataset accompanies this repository. The dataset could be downloaded from [figshare](https://doi.org/10.6084/m9.figshare.19224786.v1). This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.
+A simulated dataset accompanies this repository.
+The dataset could be downloaded from [figshare](https://doi.org/10.6084/m9.figshare.19224786.v1) or
+fetched automatically using the supplied script as follows:
+
+```shell
+scripts/download_data.sh
+```
+
+## Data set description
+
+This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.
 
  - **sim_ergo_1600.csv** contains heart rate timeseries data for 1600 patients' ergometric tests. For each patient, 20 different ergometric tests were simulated. Each row in this file constitutes three field values: Ergo_ID, Heart Rate (BPM), and timestamp.
 
