@@ -22,7 +22,9 @@ build/tslink1.o : src/tslink1.cpp
 	@mkdir -p $(@D)
 	g++ $(CFLAGS) src/tslink1.cpp -o build/tslink1.o
 
-tslink1 : $(OBJS) build/tslink1.o
+tslink1 : bin/tslink1
+
+bin/tslink1 : $(OBJS) build/tslink1.o
 	@mkdir -p $(@D)
 	g++ $(LFLAGS) $(OBJS) build/tslink1.o -o bin/tslink1 -lboost_system -lboost_filesystem
 
@@ -30,7 +32,9 @@ build/tslink2.o : src/tslink2.cpp
 	@mkdir -p $(@D)
 	g++ $(CFLAGS) src/tslink2.cpp -o build/tslink2.o
 
-tslink2 : $(OBJS) build/tslink2.o
+tslink2 : bin/tslink2
+
+bin/tslink2 : $(OBJS) build/tslink2.o
 	@mkdir -p $(@D)
 	g++ $(LFLAGS) $(OBJS) build/tslink2.o -o bin/tslink2 -lboost_system -lboost_filesystem
 
