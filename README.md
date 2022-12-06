@@ -20,6 +20,14 @@ fetched automatically using the supplied script as follows:
 scripts/download_data.sh
 ```
 
+Optionally, to prepare data for linking integer values, use the following command to drop the 
+fractions from all heart rate values.
+
+```shell
+gawk 'BEGIN{FS=","} {if(NR==1) {print($0)} else {printf("%d,%d,%d\n",$1,$2,$3)}} END{}' data/sim_ergo_1600.csv > data/sim_ergo_1600_int.csv
+gawk 'BEGIN{FS=","} {if(NR==1) {print($0)} else {printf("%d,%d,%d\n",$1,$2,$3)}} END{}' data/sim_pat_1600.csv > data/sim_pat_1600_int.csv
+```
+
 ## Data set description
 
 This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.
