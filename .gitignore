@@ -54,3 +54,4 @@ bin/
 
 # Tests directory
 tests/
+/scripts/.ipynb_checkpoints/gen_categorical_dataset-checkpoint.ipynb
