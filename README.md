@@ -28,6 +28,20 @@ gawk 'BEGIN{FS=","} {if(NR==1) {print($0)} else {printf("%d,%d,%d\n",$1,$2,$3)}}
 gawk 'BEGIN{FS=","} {if(NR==1) {print($0)} else {printf("%d,%d,%d\n",$1,$2,$3)}} END{}' data/sim_pat_1600.csv > data/sim_pat_1600_int.csv
 ```
 
+Optionally, to prepare data for linking categorical values, use the following command to convert
+heart rate values into discrete levels. 
+
+```shell
+scripts/gen_categorical_dataset.py
+```
+This script loads the simulation dataset files, convert the values therein into series of characters,
+and save the results as ``../data/sim_ergo_1600_cat.csv`` and ``../data/sim_pat_1600_cat.csv``.
+The script converts the heart rate values as follows. First the values are divided by 10,
+then converted into integer, and finally the integer values ``[0...25]``
+are mapped into lowercase characters ``[ab...z]``
+For example, the heart rate values ``[94.3, 100.5, 130.1, 110.5]`` would be mapped into 
+characters ``[j,k,n,l]`` respectively.
+
 ## Data set description
 
 This dataset constitutes two files (after decompression), namely: **sim_ergo_1600.csv** and **sim_pat_1600.csv**.
