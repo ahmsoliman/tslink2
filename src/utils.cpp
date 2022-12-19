@@ -6,10 +6,9 @@
 #include <string>
 #include <fcntl.h>
 #include <unistd.h>
-#include <boost/lexical_cast.hpp>
+#include <cstring>
 
 using namespace std;
-using namespace boost;
 
 #define BUFFER_SIZE (16 * 1024)
 
@@ -90,13 +89,13 @@ read_csv(string filename, vector<int> &ID, vector<float> &HR, vector<int> &Epoch
                   break;
                 case 2:
                   f[j]='\0';
-                  try
-                  {
-                    HR[r]=lexical_cast<float>(f);
-                  }
-                  catch (bad_lexical_cast &)
+                  if (strlen(f)==1 && int(f[0])>='A' && int(f[0])<='z')
                   {
                     HR[r]=int(f[0]);
+                  }
+                  else
+                  {
+                    HR[r]=stof(f);
                   }
                   j=0;
                   //f[0]='\0';
